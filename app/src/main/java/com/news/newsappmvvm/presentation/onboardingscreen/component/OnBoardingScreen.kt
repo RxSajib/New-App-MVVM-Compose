@@ -24,11 +24,12 @@ import com.news.newsappmvvm.presentation.onboardingscreen.component.common.NewsB
 import com.news.newsappmvvm.presentation.onboardingscreen.component.common.NewsTextButton
 import com.news.newsappmvvm.presentation.onboardingscreen.component.common.PageIndicator
 import com.news.newsappmvvm.presentation.onboardingscreen.pages
+import com.news.newsappmvvm.presentation.onboardingscreen.presentation.onboarding.ONBoardingEvent
 import kotlinx.coroutines.launch
 
 private const val TAG = "OnBoardingScreen"
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(event : (ONBoardingEvent) -> Unit) {
 
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
@@ -74,6 +75,7 @@ fun OnBoardingScreen() {
                         onclick = {
                             scope.launch {
                                 if(pagerState.currentPage == 2){
+                                    event(ONBoardingEvent.SaveAppEntry)
                                     //todo navigated to homescreen
                                     Log.d(TAG, "OnBoardingScreen: finish page")
                                 }else {
