@@ -83,4 +83,13 @@ dependencies {
 
     //todo paging 3
     implementation("androidx.paging:paging-runtime:3.3.5")
+    implementation("androidx.paging:paging-compose:3.3.5")
+
+
+    //todo retrofit android
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+    //todo shimmer effect
+    implementation("com.valentinilk.shimmer:compose-shimmer:1.3.2")
 }

@@ -1,4 +1,4 @@
-package com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase
+package com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.app_entry
 
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.manager.LocalUserManager
 import kotlinx.coroutines.flow.Flow
