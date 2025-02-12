@@ -1,6 +1,7 @@
 package com.news.newsappmvvm.presentation.onboardingscreen.presentation.home.component
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -35,27 +36,31 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.news.newsappmvvm.R
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.model.Article
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.model.Source
 import com.news.newsappmvvm.ui.theme.NewsAppMVVMTheme
 
+private const val TAG = "ArticleCard"
 @Composable
 fun ArticleCard(article: Article, modifier: Modifier = Modifier, clickable: () -> Unit) {
 
+    Log.d(TAG, "ArticleCard: ${article.urlToImage}")
     val context = LocalContext.current
 
     Row(modifier = modifier.clickable { clickable() }) {
+
         AsyncImage(
             modifier = Modifier
                 .size(100.dp)
                 .aspectRatio(1f)
                 .clip(shape = RoundedCornerShape(size = 10.dp)),
-            model = ImageRequest.Builder(context = context).data(article.urlToImage).build(),
+            model = ImageRequest.Builder(context).data(article.urlToImage).crossfade(true).build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            placeholder = painterResource(R.drawable.error),
-            error = painterResource(R.drawable.error)
+            placeholder = painterResource(R.drawable.loading_image),
+            error = painterResource(R.drawable.error_image)
         )
 
         Column(

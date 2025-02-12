@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -50,8 +51,9 @@ fun SearchBar(
 
     Box(modifier = modifier) {
         TextField(
+
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth().padding(horizontal = 10.dp)
                 .searchBarBorder(),
             value = text,
             onValueChange = onValueChange,
@@ -71,7 +73,9 @@ fun SearchBar(
             colors = TextFieldDefaults.colors(
                 unfocusedContainerColor = Color.Gray.copy(0.2f),
                 focusedContainerColor = Color.Gray.copy(0.2f),
-                cursorColor = Color.Green
+                cursorColor = Color.Green,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
             ),
             singleLine = true,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
