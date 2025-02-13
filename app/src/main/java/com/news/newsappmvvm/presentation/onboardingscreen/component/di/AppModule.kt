@@ -12,6 +12,7 @@ import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.userc
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.app_entry.SaveAppEntry
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.GetNews
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.NewsUseCase
+import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.SearchNews
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,13 +40,16 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsRepository(newsAPI: NewsAPI) : NewsRepository = NewsRepositoryImp(
+    fun provideNewsRepository(newsAPI: NewsAPI): NewsRepository = NewsRepositoryImp(
         newsAPI = newsAPI
     )
 
     @Provides
     @Singleton
-    fun provideNewsUseCase(newsRepository: NewsRepository) : NewsUseCase = NewsUseCase(getNews = GetNews(newsRepository = newsRepository))
+    fun provideNewsUseCase(newsRepository: NewsRepository): NewsUseCase = NewsUseCase(
+        getNews = GetNews(newsRepository = newsRepository),
+        searchNews = SearchNews(newsRepository = newsRepository)
+    )
 
 
     @Provides
