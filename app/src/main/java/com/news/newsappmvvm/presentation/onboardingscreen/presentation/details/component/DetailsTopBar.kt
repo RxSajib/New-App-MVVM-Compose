@@ -45,7 +45,7 @@ fun DetailsTopBar(
                 Icon(painter = painterResource(id = R.drawable.bookmark_svgrepo_com), contentDescription = null)
             }
             IconButton(onClick = onShareClick) {
-                Icon(painter = painterResource(R.drawable.search_alt_svgrepo_com), contentDescription = null)
+                Icon(painter = painterResource(R.drawable.share_svgrepo_com), contentDescription = null)
             }
             IconButton(onClick = onBrowsingClick) {
                 Icon(painter = painterResource(R.drawable.network_backup_svgrepo_com), contentDescription = null)

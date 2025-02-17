@@ -1,4 +1,6 @@
 package com.news.newsappmvvm.presentation.onboardingscreen.presentation.details
 
-class DetailsEvent {
+sealed class DetailsEvent {
+
+    data object SaveArticlesEvent : DetailsEvent()
 }

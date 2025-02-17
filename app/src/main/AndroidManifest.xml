@@ -19,7 +19,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,5 +27,19 @@
             </intent-filter>
         </activity>
     </application>
+
+    <queries>
+
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="https"/>
+        </intent>
+
+        <intent>
+            <action android:name="android.intent.action.SEND"/>
+        </intent>
+
+    </queries>
 
 </manifest>

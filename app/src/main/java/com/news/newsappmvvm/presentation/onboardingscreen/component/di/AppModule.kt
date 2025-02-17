@@ -1,7 +1,11 @@
 package com.news.newsappmvvm.presentation.onboardingscreen.component.di
 
 import android.content.Context
+import androidx.room.Room
 import com.news.newsappmvvm.presentation.onboardingscreen.component.data.DataManager
+import com.news.newsappmvvm.presentation.onboardingscreen.component.data.local.ArticleDao
+import com.news.newsappmvvm.presentation.onboardingscreen.component.data.local.ArticleDatabase
+import com.news.newsappmvvm.presentation.onboardingscreen.component.data.local.SourceTypeConverter
 import com.news.newsappmvvm.presentation.onboardingscreen.component.data.manager.LocalUserManagerImp
 import com.news.newsappmvvm.presentation.onboardingscreen.component.data.remote.NewsAPI
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.manager.LocalUserManager
@@ -64,4 +68,15 @@ object AppModule {
             saveAppEntry = SaveAppEntry(localUserManager = localUserManager),
             getAppEntry = GetAppEntry(localUserManager = localUserManager)
         )
+
+
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context) : ArticleDatabase =
+        Room.databaseBuilder(context = context, ArticleDatabase::class.java, "ArticleDatabase")
+            .fallbackToDestructiveMigration().build()
+
+    @Provides
+    @Singleton
+    fun provideDao(articleDatabase: ArticleDatabase) : ArticleDao = articleDatabase.getDao()
 }
