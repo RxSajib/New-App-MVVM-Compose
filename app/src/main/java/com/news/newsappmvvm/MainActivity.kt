@@ -25,6 +25,7 @@ private const val TAG = "MainActivity"
 class MainActivity : ComponentActivity() {
 
     private val viewmodel by viewModels<MainViewModel>()
+    @Inject lateinit var dao: ArticleDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,8 @@ class MainActivity : ComponentActivity() {
                 viewmodel.sp
             }
         }
+
+
 
 
         enableEdgeToEdge()

@@ -14,9 +14,12 @@ import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.repos
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.app_entry.AppEntryUseCase
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.app_entry.GetAppEntry
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.app_entry.SaveAppEntry
+import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.DeleteArticles
+import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.GetArticles
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.GetNews
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.NewsUseCase
 import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.SearchNews
+import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.usercase.news.UpsertArticles
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,9 +53,12 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsUseCase(newsRepository: NewsRepository): NewsUseCase = NewsUseCase(
+    fun provideNewsUseCase(newsRepository: NewsRepository, dao: ArticleDao): NewsUseCase = NewsUseCase(
         getNews = GetNews(newsRepository = newsRepository),
-        searchNews = SearchNews(newsRepository = newsRepository)
+        searchNews = SearchNews(newsRepository = newsRepository),
+        upsertArticles = UpsertArticles(dao = dao),
+        deleteArticles = DeleteArticles(dao = dao),
+        getArticles = GetArticles(dao = dao)
     )
 
 
