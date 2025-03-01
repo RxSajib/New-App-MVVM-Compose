@@ -16,8 +16,8 @@ import com.news.newsappmvvm.presentation.onboardingscreen.presentation.common.Bo
 
 @Composable
 fun BookMarkScreen(
-    bookMarkState: BookMarkState,
-    navigator: (String) -> Unit
+   // bookMarkState: BookMarkState,
+   // navigator: (String) -> Unit
 ) {
     Column(modifier = Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(15.dp)) {
         Text(
@@ -25,6 +25,6 @@ fun BookMarkScreen(
             style = MaterialTheme.typography.titleLarge
         )
         Spacer(modifier = Modifier.height(10.dp))
-        BookMarkArticleList(bookMarkState.list, onClick = {})
+      //  BookMarkArticleList(bookMarkState.list, onClick = {})
     }
 }

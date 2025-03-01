@@ -19,18 +19,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.paging.compose.LazyPagingItems
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.news.newsappmvvm.R
-import com.news.newsappmvvm.presentation.onboardingscreen.component.domain.model.Article
 import com.news.newsappmvvm.presentation.onboardingscreen.presentation.common.ArticlesList
 import com.news.newsappmvvm.presentation.onboardingscreen.presentation.common.SearchBar
 import com.news.newsappmvvm.presentation.onboardingscreen.presentation.navigation.Route
 
 private const val TAG = "HomeScreen"
 @Composable
-fun HomeScreen(articles : LazyPagingItems<Article>, navigate: (String) -> Unit) {
+fun HomeScreen(navigate: (String) -> Unit, homeViewModel: HomeViewModel) {
+    val articles = homeViewModel.getNews.collectAsLazyPagingItems()
+
     val title by remember {
         derivedStateOf {
             if(articles.itemCount > 10){
@@ -90,7 +91,6 @@ fun HomeScreen(articles : LazyPagingItems<Article>, navigate: (String) -> Unit) 
         ArticlesList(
             modifier = Modifier.padding(horizontal = 10.dp),
             articles = articles, onClick = {
-
         })
     }
 }

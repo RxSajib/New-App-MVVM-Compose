@@ -2,6 +2,6 @@ package com.news.newsappmvvm.presentation.onboardingscreen.presentation.onboardi
 
 sealed class ONBoardingEvent {
 
-    object SaveAppEntry : ONBoardingEvent()
+    data object SaveAppEntry : ONBoardingEvent()
 
 }
